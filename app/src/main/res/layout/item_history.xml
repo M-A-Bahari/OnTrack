@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="8dp"
+    android:layout_marginHorizontal="4dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    android:id="@+id/cardView">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@drawable/border">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Service Icon -->
+            <TextView
+                android:id="@+id/serviceIcon"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:text="🎬"
+                android:gravity="center"
+                android:textSize="32sp"
+                android:background="@drawable/border" />
+
+            <!-- Service Info -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="16dp"
+                android:orientation="vertical">
+
+                <!-- Service Name -->
+                <TextView
+                    android:id="@+id/serviceName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Netflix"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <!-- Category Badge -->
+                <TextView
+                    android:id="@+id/category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="Entertainment"
+                    android:textSize="11sp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/buttonborder"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp" />
+
+            </LinearLayout>
+
+            <!-- Price Section -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="end">
+
+                <TextView
+                    android:id="@+id/amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$12"
+                    android:textSize="24sp"
+                    android:textColor="@android:color/darker_gray"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/billingCycle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Monthly"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/white" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Bottom Info Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Start Date -->
+            <TextView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:text="📅"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/startDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:text="Started: Jan 15, 2024"
+                android:textSize="12sp"
+                android:textColor="@android:color/white" />
+
+            <!-- Cancelled Badge -->
+            <TextView
+                android:id="@+id/cancelledStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancelled"
+                android:textSize="11sp"
+                android:textColor="@android:color/white"
+                android:background="#FF6B6B"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp" />
+
+        </LinearLayout>
+
+        <!-- Swipe hint -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="← Swipe left to delete permanently"
+            android:textSize="10sp"
+            android:textColor="@android:color/darker_gray"
+            android:gravity="end" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
