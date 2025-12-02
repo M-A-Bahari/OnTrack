@@ -84,7 +84,7 @@ class DashboardActivity : AppCompatActivity() {
         // Observe active subscriptions
         subscriptionViewModel.getActiveSubscriptions(userEmail).observe(this) { subscriptions ->
             adapter.submitList(subscriptions)
-            
+
             // Update Active Count
             activeCountText.text = "${subscriptions.size} active"
 
@@ -130,7 +130,7 @@ class DashboardActivity : AppCompatActivity() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
                 val subscription = adapter.getSubscriptionAt(position)
-                
+
                 // Show the first dialog
                 showCancelSubscriptionDialog(subscription)
             }
@@ -159,7 +159,8 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun openCancelUrl(subscription: Subscription) {
-        val url = subscription.cancelUrl ?: "https://www.google.com/search?q=how+to+cancel+${subscription.serviceName}"
+        // Use stored cancelUrl or get the direct cancellation link for the service
+        val url = subscription.cancelUrl ?: getCancellationUrl(subscription.serviceName)
         try {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
             startActivity(intent)
@@ -168,6 +169,19 @@ class DashboardActivity : AppCompatActivity() {
         } catch (e: Exception) {
             Toast.makeText(this, "Could not open cancellation page.", Toast.LENGTH_SHORT).show()
             recyclerView.adapter?.notifyItemChanged(adapter.currentList.indexOf(subscription))
+        }
+    }
+
+    private fun getCancellationUrl(serviceName: String): String {
+        return when (serviceName.lowercase().trim()) {
+            "netflix" -> "https://www.netflix.com/ca/account"
+            "disney+", "disney plus" -> "https://help.disneyplus.com/article/disneyplus-en-ca-cancel"
+            "amazon prime", "prime" -> "https://www.amazon.ca/yourmembershipsandsubscriptions"
+            "spotify" -> "https://www.spotify.com/ca/account/subscription/"
+            "apple music" -> "https://support.apple.com/en-ca/HT202039"
+            "youtube premium", "youtube" -> "https://youtube.com/paid_memberships"
+            "hbo max", "max" -> "https://www.max.com/subscription"
+            else -> "https://www.google.com/search?q=how+to+cancel+${serviceName}"
         }
     }
 
